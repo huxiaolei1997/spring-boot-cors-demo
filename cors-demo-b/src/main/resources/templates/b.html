@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>Hello World</p>
+</body>
+<script src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $.ajax({
+        type: "post",
+        // url: "http://www.a.com:8080/getA?username=123",
+        url: "https://www.a.com/getA?username=123",
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        dataType:'json',
+        // contentType:'application/x-www-form-urlencoded',
+        // contentType:'multipart/form-data',
+        success: function(data){
+            console.log(data);
+        }
+    });
+
+
+    $.ajax({
+        type: "post",
+        // url: "http://www.a.com:8080/getAForRequestJson",
+        url: "https://www.a.com/getAForRequestJson",
+        contentType:'application/json',
+        crossDomain:true, //设置跨域为true
+        xhrFields: {
+            withCredentials: true //默认情况下，标准的跨域请求是不会发送cookie的
+        },
+        data: JSON.stringify({
+            id: 1,
+            username: '1111223',
+            age: 23
+        }),
+        dataType:'json',
+        success: function(data){
+            console.log(data);
+        }
+    });
+</script>
+</html>
